@@ -26,6 +26,14 @@ class abStrings_Class
     {
         return string.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
     }
+
+    pad(str, pad, size)
+    {
+        str = str + ``;
+        while (str.length < size) 
+            str = pad + str;
+        return str.substr(0, 2);
+    }
     
     removeDoubles(string, char) {
         let regexp = new RegExp(`${char}${char}`, 'g');
