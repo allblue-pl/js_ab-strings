@@ -1,5 +1,9 @@
 'use strict';
 
+const
+    js0 = require('js0')
+;
+
 class abStrings_Class
 {
 
@@ -27,12 +31,54 @@ class abStrings_Class
         return string.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
     }
 
+    getCharsRegExp(types = [], extra = '', langs = null)
+    {
+        for (let type of types) {
+            if (!types.includes(type))
+                throw new Error(`Unknown chars type '${type}'.`);
+        }
+
+        let chars = '';
+
+        if (types.includes('digits'))
+            chars += '0-9';
+        if (types.includes('letters'))
+            chars += 'a-zA-Z' + this.getLangsSpecialCharacters();
+        if (types.includes('special')) {
+            chars += ' `!@#%&_=/<>:;",\'' +
+                '\\\\' + '\\^' + '\\$' + '\\.' + '\\[' + '\\]' + '\\|' +
+                '\\(' + '\\)' + '\\?' + '\\*' + '\\+' + '\\{' + '\\}' +
+                '\\-';
+        }
+
+        return chars + this.escapeRegExpChars(extra);
+    }
+
+    getCharsRegExp_Basic()
+    {
+        return this.getCharsRegExp([ 'digits', 'letters', 'special' ]);
+    }
+
+    getLangsSpecialCharacters(langs = null)
+    {
+        if (langs === null)
+            langs = [ 'pl' ];
+
+        let chars = '';
+        if (langs.includes('pl'))
+            chars += 'ąćęłńóśźż' + 'ĄĆĘŁŃÓŚŹŻ';
+
+        return chars;
+    }
+
     pad(str, pad, size)
     {
+        js0.args(arguments, 'string', 'string', js0.Int);
+
         str = str + ``;
         while (str.length < size) 
             str = pad + str;
-        return str.substr(0, 2);
+        return str.substr(0, size);
     }
     
     removeDoubles(string, char) {
