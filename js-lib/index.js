@@ -7,6 +7,15 @@ const
 class abStrings_Class
 {
 
+    escapeHtml(html) {
+        return html
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
     escapeLangChars(string) {
         let replaceFrom = [ 'ą', 'ć', 'ę', 'ł', 'ń', 'ó', 'ś', 'ź', 'ż',
                 'Ą', 'Ć', 'Ę', 'Ł', 'Ń', 'Ó', 'Ś', 'Ź', 'Ż' ];
@@ -26,13 +35,11 @@ class abStrings_Class
         return string.replace(regexp, '');
     }
 
-    escapeRegExpChars(string)
-    {
+    escapeRegExpChars(string) {
         return string.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
     }
 
-    getCharsRegExp(types = [], extra = '', langs = null)
-    {
+    getCharsRegExp(types = [], extra = '', langs = null) {
         for (let type of types) {
             if (!types.includes(type))
                 throw new Error(`Unknown chars type '${type}'.`);
@@ -54,13 +61,11 @@ class abStrings_Class
         return chars + this.escapeRegExpChars(extra);
     }
 
-    getCharsRegExp_Basic()
-    {
-        return this.getCharsRegExp([ 'digits', 'letters', 'special' ]);
+    getCharsRegExp_Basic(extra = '') {
+        return this.getCharsRegExp([ 'digits', 'letters', 'special' ], extra);
     }
 
-    getLangsSpecialCharacters(langs = null)
-    {
+    getLangsSpecialCharacters(langs = null) {
         if (langs === null)
             langs = [ 'pl' ];
 
@@ -71,8 +76,7 @@ class abStrings_Class
         return chars;
     }
 
-    pad(str, pad, size)
-    {
+    pad(str, pad, size) {
         js0.args(arguments, 'string', 'string', js0.Int);
 
         str = str + ``;
