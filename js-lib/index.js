@@ -7,6 +7,12 @@ const
 class abStrings_Class
 {
 
+    escapeFromUnallowedChars(string, unallowedCharacters) {
+        let regexp = new RegExp(`[${allowedCharacters}]`, 'g');
+
+        return string.replace(regexp, '');
+    }
+
     escapeHtml(html) {
         return html
             .replace(/&/g, "&amp;")
