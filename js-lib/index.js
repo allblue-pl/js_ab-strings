@@ -8,7 +8,7 @@ class abStrings_Class
 {
 
     escapeFromUnallowedChars(string, unallowedCharacters) {
-        let regexp = new RegExp(`[${allowedCharacters}]`, 'g');
+        let regexp = new RegExp(`[${unallowedCharacters}]`, 'g');
 
         return string.replace(regexp, '');
     }
