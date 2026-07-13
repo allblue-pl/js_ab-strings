@@ -1,3 +1,1 @@
-'use strict';
-
-module.exports = require('./js-lib');
+export default require('./js-lib');

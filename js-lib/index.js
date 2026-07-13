@@ -1,11 +1,6 @@
-'use strict';
+import js0 from "js0";
 
-const
-    js0 = require('js0')
-;
-
-class abStrings_Class
-{
+export class abStrings_Class {
 
     escapeFromUnallowedChars(string, unallowedCharacters) {
         let regexp = new RegExp(`[${unallowedCharacters}]`, 'g');
@@ -100,4 +95,5 @@ class abStrings_Class
     }
 
 }
-module.exports = new abStrings_Class();
+const abStrings = new abStrings_Class();
+export default abStrings;
