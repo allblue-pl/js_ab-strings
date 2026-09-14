@@ -1,1 +1,1 @@
-{"version":"7.0.2","root":["./index.ts","./ts-lib/index.ts"],"packageJsons":["../../../../../../../Development/JS_ABStrings/git/js_ab-strings/package.json"],"missingPackageJsons":["./ts-lib/package.json"]}
+{"version":"7.0.2","root":["./index.ts","./ts-lib/index.ts"],"packageJsons":["../../../../../JS_ABStrings/git/js_ab-strings/package.json"],"missingPackageJsons":["./ts-lib/package.json"]}
