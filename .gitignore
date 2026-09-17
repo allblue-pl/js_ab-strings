@@ -1,3 +1,7 @@
+### Typescript
+tsconfig.tsbuildinfo
+
+### Node
 # Logs
 logs
 *.log
